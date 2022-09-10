@@ -358,7 +358,7 @@ frames = SubResource( 7 )
 position = Vector2( -251.416, -166.624 )
 frames = SubResource( 7 )
 
-[node name="Join2" type="KinematicBody2D" parent="Menu/Main"]
+[node name="Join2" type="Node2D" parent="Menu/Main"]
 position = Vector2( 110, 0 )
 script = ExtResource( 30 )
 
