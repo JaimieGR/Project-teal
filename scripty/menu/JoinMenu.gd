@@ -1,6 +1,6 @@
-extends KinematicBody2D
+extends Node2D
 
-var JoinMenu = false
+var vel = 0
 
 func _ready():
 	var main = get_node("..")
@@ -9,16 +9,25 @@ func _ready():
 
 func _on_join_btn_pressed():
 	print("Join BTN was signaled")
-	print (str(JoinMenu) + " to " + str(!JoinMenu))
-	if JoinMenu:
-		JoinMenu = !JoinMenu
+	#print (str(JoinMenu) + " to " + str(!JoinMenu))
+	if vel >= 0 && position.x != 0:
+		vel = -500
 	else:
-		JoinMenu = !JoinMenu
+		vel = 80
 
 func _process(delta):
-	var moverate = 5*(3)
-	if JoinMenu and get_position().x != 0:
-		move_and_collide(Vector2(-moverate,0),true)
-	elif JoinMenu == false and get_position().x != 110:
-		move_and_collide(Vector2(moverate,0),true)
-	print(str(get_position()) )
+	if vel < 0:
+		vel *= 0.94
+	elif vel > 0:
+		vel /= 0.94
+	else:
+		vel = 0
+	position.x += vel * delta
+	if position.x < 0:
+		position.x = 0
+		vel = 0
+	if position.x > 110:
+		position.x = 110
+		vel = 0
+	print(vel)
+	print(position)
