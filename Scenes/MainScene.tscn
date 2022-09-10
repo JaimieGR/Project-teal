@@ -16,12 +16,10 @@
 [ext_resource path="res://assets/buttons/Btn6/Button6-Red.png" type="Texture" id=14]
 [ext_resource path="res://assets/buttons/Btn33/Button33Red.png" type="Texture" id=15]
 [ext_resource path="res://assets/buttons/Btn33/Button33-Red.png" type="Texture" id=16]
-[ext_resource path="res://assets/buttons/Btn24/Button24White.png" type="Texture" id=17]
-[ext_resource path="res://assets/buttons/Btn24/Button24-White.png" type="Texture" id=18]
 [ext_resource path="res://assets/buttons/Btn33/Button33White.png" type="Texture" id=19]
 [ext_resource path="res://assets/buttons/Btn33/Button33-White.png" type="Texture" id=20]
 [ext_resource path="res://assets/buttons/Btn6/Button6Red.png" type="Texture" id=21]
-[ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=22]
+[ext_resource path="res://assets/Menu/Join/JoinMenu.png" type="Texture" id=22]
 [ext_resource path="res://Scenes/controls.gd" type="Script" id=23]
 [ext_resource path="res://assets/tray and control/tray/[tray] radio.png" type="Texture" id=24]
 [ext_resource path="res://assets/tray and control/tray/[tray] helm.png" type="Texture" id=25]
@@ -29,6 +27,8 @@
 [ext_resource path="res://assets/tray and control/tray/[tray] Engine.png" type="Texture" id=27]
 [ext_resource path="res://assets/tray and control/tray/[tray] desk.png" type="Texture" id=28]
 [ext_resource path="res://Scenes/Button.gd" type="Script" id=29]
+[ext_resource path="res://scripty/menu/JoinMenu.gd" type="Script" id=30]
+[ext_resource path="res://scripty/menu/MainMenu.gd" type="Script" id=31]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -238,10 +238,10 @@ scale = Vector2( 3, 3 )
 script = ExtResource( 6 )
 
 [node name="Main" type="Node2D" parent="Menu"]
-script = ExtResource( 22 )
+script = ExtResource( 31 )
 
 [node name="art" type="Sprite" parent="Menu/Main"]
-position = Vector2( 20.6667, 0 )
+position = Vector2( 20.5507, 0 )
 scale = Vector2( 0.27, 0.27 )
 texture = ExtResource( 12 )
 
@@ -254,10 +254,10 @@ margin_left = -282.0
 margin_top = -146.0
 margin_right = -258.0
 margin_bottom = -138.0
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 17 )
-texture_disabled = ExtResource( 18 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 19 )
+texture_disabled = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -271,10 +271,10 @@ margin_left = -282.0
 margin_top = -157.0
 margin_right = -249.0
 margin_bottom = -149.0
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 17 )
-texture_disabled = ExtResource( 18 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 19 )
+texture_disabled = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -285,9 +285,9 @@ anchor_top = 0.056
 anchor_right = 0.093
 anchor_bottom = 0.088
 margin_left = -282.0
-margin_top = -135.0
+margin_top = -133.0
 margin_right = -249.0
-margin_bottom = -127.0
+margin_bottom = -125.0
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 19 )
@@ -302,9 +302,9 @@ anchor_top = 0.056
 anchor_right = 0.093
 anchor_bottom = 0.088
 margin_left = -282.0
-margin_top = -124.0
+margin_top = -122.0
 margin_right = -249.0
-margin_bottom = -116.0
+margin_bottom = -116.039
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 19 )
@@ -336,9 +336,9 @@ anchor_top = 0.056
 anchor_right = 0.093
 anchor_bottom = 0.088
 margin_left = -282.0
-margin_top = -99.9999
+margin_top = 149.0
 margin_right = -249.0
-margin_bottom = -91.9999
+margin_bottom = 157.0
 texture_normal = ExtResource( 16 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 15 )
@@ -351,15 +351,21 @@ __meta__ = {
 texture = ExtResource( 13 )
 
 [node name="join light" type="AnimatedSprite" parent="Menu/Main"]
-position = Vector2( -252, -153 )
+position = Vector2( -252.097, -179.668 )
 frames = SubResource( 7 )
 
 [node name="host light" type="AnimatedSprite" parent="Menu/Main"]
-position = Vector2( -252, -142 )
+position = Vector2( -251.416, -166.624 )
 frames = SubResource( 7 )
 
+[node name="Join2" type="KinematicBody2D" parent="Menu/Main"]
+position = Vector2( 110, 0 )
+script = ExtResource( 30 )
+
+[node name="Overlay" type="Sprite" parent="Menu/Main/Join2"]
+texture = ExtResource( 22 )
+
 [node name="cover" type="Sprite" parent="Menu/Main"]
-position = Vector2( -0.773763, -0.199575 )
 texture = ExtResource( 3 )
 
 [node name="Players" type="CanvasLayer" parent="Menu"]
