@@ -25,8 +25,8 @@ config/windows_native_icon="res://assets/1661910279.ico"
 
 [autoload]
 
-Network="*res://scripty/networking/Network.gd"
-Gamestate="*res://scripty/networking/Gamestate.gd"
+network="*res://scripty/networking/network.gd"
+gamestate="*res://scripty/networking/gamestate.gd"
 
 [display]
 

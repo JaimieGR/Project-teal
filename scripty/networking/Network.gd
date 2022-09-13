@@ -44,7 +44,7 @@ func create_server():
 	emit_signal("server_created")
 
 	# Register the server's player in the local player list
-	register_player(Gamestate.player_info)
+	#register_player(Gamestate.player_info)
 
 func join_server(ip, port):
 	var net = NetworkedMultiplayerENet.new()
@@ -76,7 +76,6 @@ remote func register_player(pinfo):
 
 # Everyone gets notified whenever a new client joins the server
 func _on_player_connected(id):
-	emit_signal("join_success")
 
 	# Update the player_info dictionary with the obtained unique network ID
 	Gamestate.player_info.net_id = get_tree().get_network_unique_id()
@@ -84,6 +83,8 @@ func _on_player_connected(id):
 	rpc_id(1, "register_player", Gamestate.player_info)
 	# And register itself on the local list
 	register_player(Gamestate.player_info)
+
+
 
 # Everyone gets notified whenever someone disconnects from the server
 func _on_player_disconnected(id):

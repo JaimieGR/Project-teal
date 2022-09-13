@@ -358,11 +358,11 @@ frames = SubResource( 7 )
 position = Vector2( -251.416, -166.624 )
 frames = SubResource( 7 )
 
-[node name="Join2" type="Node2D" parent="Menu/Main"]
+[node name="Join" type="Node2D" parent="Menu/Main"]
 position = Vector2( 110, 0 )
 script = ExtResource( 30 )
 
-[node name="Overlay" type="Sprite" parent="Menu/Main/Join2"]
+[node name="Overlay" type="Sprite" parent="Menu/Main/Join"]
 texture = ExtResource( 22 )
 
 [node name="cover" type="Sprite" parent="Menu/Main"]

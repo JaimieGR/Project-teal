@@ -16,3 +16,5 @@ func _on_join_btn_pressed():
 func _on_host_btn_pressed():
 	emit_signal("Host_Clicked")
 	print("host button was clicked  -  HOST")
+	network.create_server("127.0.0.1",4546,"This server",7)
+	#ip"string" port"#" name"string""
