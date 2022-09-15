@@ -10,8 +10,9 @@ func _ready():
 	hostBtn.connect("pressed", self, "_on_host_btn_pressed")
 
 func _on_join_btn_pressed():
-	emit_signal("Join_Clicked")
 	print("join button was clicked  -  JOIN")
+	emit_signal("Join_Clicked")
+	#
 
 func _on_host_btn_pressed():
 	emit_signal("Host_Clicked")

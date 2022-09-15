@@ -114,4 +114,4 @@ func _on_connection_failed():
 
 # Peer is notified when disconnected from server
 func _on_disconnected_from_server():
-	print("server diss")
+	print("")

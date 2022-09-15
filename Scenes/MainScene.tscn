@@ -241,7 +241,7 @@ script = ExtResource( 6 )
 script = ExtResource( 31 )
 
 [node name="art" type="Sprite" parent="Menu/Main"]
-position = Vector2( 20.5507, 0 )
+position = Vector2( 20, 0 )
 scale = Vector2( 0.27, 0.27 )
 texture = ExtResource( 12 )
 
