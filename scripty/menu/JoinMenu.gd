@@ -55,7 +55,8 @@ func load_():
 
 
 	var ips = ["127.0.0.1","0.0.0.0","97.113.137.236","","","","","","",""]
-	var ports = [11099,11099,11099,0000,0000,0000,0000,0000,0000,0000]
+	ips = ["127.0.0.1","","","","","","","","",""]
+	var ports = [11099,11099,0000,0000,0000,0000,0000,0000,0000,0000]
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	#for i in range(ips.size()):
@@ -85,7 +86,7 @@ func load_():
 			var iplist= ["323.0.2.3:5532","824.0.5.2:6894","942.6.3.6:7924","996.3.8.4:87892"]
 			ticket("error","Offline",iplist[random.randi_range(0,3)],"...",0,0,false,i)
 
-	for j in range(10):
+	for j in range(ips.size()):
 		var node = get_node("Ticket: "+str(j))
 		if node != null:
 			node.get_parent().remove_child(node)

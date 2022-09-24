@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/Menu/Join/tickets/ticketoverlay.png" type="Texture" id=1]
 [ext_resource path="res://assets/Menu/Join/tickets/barcode-Sheet-Sheet.png" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://assets/Menu/Join/tickets/ticket light.png" type="Texture" id=5]
 [ext_resource path="res://Ticket.gd" type="Script" id=6]
 [ext_resource path="res://assets/Menu/Join/tickets/edge.png" type="Texture" id=7]
+[ext_resource path="res://assets/Menu/Join/tickets/buttonTable.png" type="Texture" id=8]
+[ext_resource path="res://assets/Menu/Join/tickets/barBTN.png" type="Texture" id=9]
+[ext_resource path="res://assets/Menu/Join/tickets/barBTNredZone.png" type="Texture" id=10]
+[ext_resource path="res://assets/Menu/Join/tickets/clickZone.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -88,16 +92,8 @@ extra_spacing_space = -1
 font_data = ExtResource( 3 )
 
 [node name="Ticket" type="Node2D"]
+position = Vector2( 49, 13 )
 script = ExtResource( 6 )
-
-[node name="Click" type="TextureButton" parent="."]
-margin_left = -48.0
-margin_top = -13.0
-margin_right = 48.0
-margin_bottom = 13.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="2Dnode" type="Node2D" parent="."]
 
@@ -121,7 +117,7 @@ margin_right = 46.0
 margin_bottom = -6.0
 custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "name i"
+text = "name "
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -162,7 +158,6 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "00"
 align = 2
 clip_text = true
-percent_visible = -0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -180,4 +175,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Left & Right" type="TextureButton" parent="."]
+margin_left = -49.0
+margin_top = -13.0
+margin_right = 49.0
+margin_bottom = 13.0
+action_mode = 0
+button_mask = 3
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="off" type="Timer" parent="."]
+
+[node name="click" type="Node2D" parent="."]
+
+[node name="pop" type="Sprite" parent="click"]
+position = Vector2( 3.8147e-06, 9.53674e-07 )
+texture = ExtResource( 8 )
+
+[node name="exit button" type="TextureButton" parent="click"]
+margin_left = -2000.0
+margin_top = -2000.0
+margin_right = 2000.0
+margin_bottom = 2000.0
+button_mask = 7
+texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="join" type="TextureButton" parent="click"]
+margin_left = -45.0
+margin_top = -4.84805
+margin_right = -23.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="Left & Right" to="." method="Click"]
+[connection signal="gui_input" from="click/exit button" to="." method="ClickExit"]
+[connection signal="pressed" from="click/exit button" to="." method="ClickExit"]
+[connection signal="pressed" from="click/join" to="." method="join"]

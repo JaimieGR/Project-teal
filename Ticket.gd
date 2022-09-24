@@ -3,11 +3,18 @@ extends Node2D
 export var websocket_url = "ws://"
 var _client = WebSocketClient.new()
 var strIP
+var id
+var right = false
 
 var online
 var scan = true
+onready var Click = $click
+#$clickOther
+
 
 func _ready():
+	z_index = 0
+	Click.hide()
 	_client.connect("connection_closed", self, "_closed")
 	_client.connect("connection_error", self, "_closed")
 	_client.connect("connection_established", self, "_connected")
@@ -17,6 +24,7 @@ func _connect():
 	websocket_url = "ws://" + strIP
 	#var err = _client.connect_to_url(websocket_url, ["lws-mirror-protocol"])
 	var err = _client.connect_to_url(websocket_url)
+	#print("...")
 	if err != OK:
 		print("FAILURE to connect to "+strIP+" | Websocket")
 		set_process(false)
@@ -25,8 +33,8 @@ func _connect():
 		print("Connected to " + strIP + " | Websocket")
 		online = true
 
-
 func create(j,ips,ports):
+	id = j
 	var ip = ips[j]
 	var port = ports[j]
 	strIP = (str(ip)+":"+str(port))
@@ -61,7 +69,6 @@ func create(j,ips,ports):
 		$Name.set_text("Loading...")
 		$state.set_text("...")
 
-
 func _closed(was_clean = false):
 	print("Closed, clean: ", was_clean)
 	set_process(false)
@@ -69,15 +76,12 @@ func _closed(was_clean = false):
 
 func _connected(proto = ""):
 	print("Connected with protocol: ", proto)
-	#_client.get_peer(1).put_packet("Test packet".to_utf8())
 
 func _on_data():
 	pass
 	var payload = JSON.parse(_client.get_peer(1).get_packet().get_string_from_utf8()).result
 	if payload["packet"] == "qurey":
 		qurey(payload)
-	#print(payload)
-	#print("Got data from server: ", _client.get_peer(1).get_packet().get_string_from_utf8())
 
 func qurey(payload):
 	$IP.set_text(strIP)
@@ -87,57 +91,41 @@ func qurey(payload):
 	$state.set_text( str(payload["status"]) )
 	scan = false
 
-
 func _process(delta):
 	#print(str(delta) )
+	#print("Attempt")
 	_client.poll()
+	"""
+	var err = _client.poll()
+	if err != OK:
+		print("POLL ERROR atempt failed")
+		online = true
+		"""
 	if !(online):
+		print("not online")
 		_connect()
 	else:
+		#print("scanning")
 		if scan:
-			print("sending message to " + strIP)
+			#print("sending message to " + strIP)
 			_client.get_peer(1).put_packet(JSON.print({"packet": "qurey"}) .to_utf8() )
-			#_client.get_peer(1).put_packet(JSON.print({"packet": "qurey"}).to_utf8() )
-			#_client.get_peer(1).put_packet("query".to_utf8())
 
 
-"""
-func create(imgName,nametxt,ip,state,playmax,playnum,online,id):
-	set_name(("Ticket: "+str(id)))
+func ClickExit(event):
+	if event is InputEventMouseButton and event.pressed:
+		print("Closer")
+		Click.hide()
+		z_index = 0
 
-	if id % 2 == 0:         #even
-		get_node("2Dnode/TicketPaper").set_frame(1)
-	else:                   #odd
-		get_node("2Dnode/TicketPaper").set_frame(0)
+func join():
+	print("Join | Click")
 
-	var random = RandomNumberGenerator.new()
-	random.randomize()
-	get_node("2Dnode/barcode").set_frame(random.randi_range(0,13))
+func Click(event):
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			BUTTON_LEFT:
+				join()
+			BUTTON_RIGHT:
+				Click.show()
+				z_index = 2
 
-	var loc = Vector2(231,-117+(26*id))
-
-	position.x = loc.x
-	position.y = loc.y
-
-
-	$IP.set_text(str(ip))
-	if online:
-		$playNum.set_text(str(playnum))
-		$maxNum.set_text(str(playmax))
-
-		$Name.set_text(str(nametxt))
-		$state.set_text(str(state))
-	else:
-		$playNum.set_text("00")
-		$maxNum.set_text("00")
-
-		$Name.set("custom_colors/default_color", Color(160,3,0,255))
-		#$Name.font_color(Color(160,3,0,255))
-		$Name.set_text("Offline")
-		$state.set_text("...")
-
-"""
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

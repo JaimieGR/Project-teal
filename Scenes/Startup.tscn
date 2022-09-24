@@ -1,0 +1,182 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://assets/loads and startups/made with godot.png" type="Texture" id=1]
+[ext_resource path="res://assets/loads and startups/ColaName.png" type="Texture" id=2]
+[ext_resource path="res://assets/loads and startups/ColaSoda.png" type="Texture" id=3]
+[ext_resource path="res://assets/loads and startups/ColaBackground.png" type="Texture" id=4]
+[ext_resource path="res://scripty/Startup.gd" type="Script" id=5]
+[ext_resource path="res://assets/loads and startups/night vision-Sheet.png" type="Texture" id=6]
+[ext_resource path="res://assets/loads and startups/NightBack.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 6 )
+region = Rect2( 304, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 608, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 6 )
+region = Rect2( 912, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 6 )
+region = Rect2( 1216, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 6 )
+region = Rect2( 1520, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 1824, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 6 )
+region = Rect2( 2128, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 2432, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 2736, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 3040, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 3344, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 6 )
+region = Rect2( 3648, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 6 )
+region = Rect2( 3952, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 6 )
+region = Rect2( 4256, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 6 )
+region = Rect2( 4560, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 6 )
+region = Rect2( 4864, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 6 )
+region = Rect2( 5168, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 6 )
+region = Rect2( 5472, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 6 )
+region = Rect2( 5776, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 6 )
+region = Rect2( 6080, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 6 )
+region = Rect2( 6384, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 6 )
+region = Rect2( 6688, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 6 )
+region = Rect2( 6992, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 6 )
+region = Rect2( 7296, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 6 )
+region = Rect2( 7600, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 6 )
+region = Rect2( 7904, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 6 )
+region = Rect2( 8208, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 6 )
+region = Rect2( 8512, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 6 )
+region = Rect2( 8816, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 6 )
+region = Rect2( 9120, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 6 )
+region = Rect2( 9424, 0, 304, 272 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 6 )
+region = Rect2( 9728, 0, 304, 272 )
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Startup" type="Node2D"]
+scale = Vector2( 3, 3 )
+z_index = 5
+script = ExtResource( 5 )
+
+[node name="Godot" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+
+[node name="Cola" type="Node2D" parent="."]
+visible = false
+
+[node name="background" type="Sprite" parent="Cola"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+
+[node name="name" type="Sprite" parent="Cola"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="soda" type="Sprite" parent="Cola"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+
+[node name="Night" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 34 )
+
+[node name="NightBack" type="Sprite" parent="Night"]
+scale = Vector2( 1, 1 )
+z_index = -2
+texture = ExtResource( 7 )

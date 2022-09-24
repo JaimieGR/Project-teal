@@ -1,0 +1,261 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://assets/tray and control/tray/[tray] helm.png" type="Texture" id=1]
+[ext_resource path="res://scripty/tray/CapDesk/CapsDesk.gd" type="Script" id=2]
+[ext_resource path="res://scripty/tray/Helm/Helm.gd" type="Script" id=3]
+[ext_resource path="res://assets/testing/map.png" type="Texture" id=4]
+[ext_resource path="res://scripty/tray/Map/Map.gd" type="Script" id=5]
+[ext_resource path="res://scripty/tray/Radio/Radio.gd" type="Script" id=6]
+[ext_resource path="res://assets/tray and control/tray/[tray] maps.png" type="Texture" id=7]
+[ext_resource path="res://assets/tray and control/tray/[tray] Weapons.png" type="Texture" id=8]
+[ext_resource path="res://scripty/tray/Engine/Engine.gd" type="Script" id=9]
+[ext_resource path="res://assets/tray and control/tray/[tray] sonar.png" type="Texture" id=10]
+[ext_resource path="res://scripty/controls/Suggestion/TreePath.gd" type="Script" id=11]
+[ext_resource path="res://scripty/controls/controls.gd" type="Script" id=12]
+[ext_resource path="res://scripty/tray/Paper/paper.gd" type="Script" id=13]
+[ext_resource path="res://assets/testing/tray cover.png" type="Texture" id=14]
+[ext_resource path="res://fonts/smallBlix.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://scripty/tray/trays.gd" type="Script" id=16]
+[ext_resource path="res://assets/tray and control/tray/[tray] Engine.png" type="Texture" id=17]
+[ext_resource path="res://assets/tray and control/tray/[tray] radio.png" type="Texture" id=18]
+[ext_resource path="res://fonts/outfont.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://assets/tray and control/tray/[tray] desk.png" type="Texture" id=20]
+[ext_resource path="res://scripty/tray/Weapons/Weapons.gd" type="Script" id=21]
+[ext_resource path="res://scripty/tray/Sonar/Sonar.gd" type="Script" id=22]
+[ext_resource path="res://assets/tray and control/control/[controls] main.png" type="Texture" id=23]
+[ext_resource path="res://fonts/UbuntuMono-R.ttf" type="DynamicFontData" id=24]
+[ext_resource path="res://scripty/controls/display.gd" type="Script" id=25]
+[ext_resource path="res://assets/tray and control/tray/[tray] papers.png" type="Texture" id=26]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+extra_spacing_top = -4
+extra_spacing_bottom = -8
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 13
+extra_spacing_bottom = -5
+extra_spacing_space = -1
+font_data = ExtResource( 24 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+
+	connect(\"pressed\", self, \"_on_press\")
+
+func _on_press():
+	#var Network = get_node(\"/root/MainScene/Client/Networking\")
+	var Network = get_node(\"/root/MainScene/Networking\")
+	print(\"button makeing network call to: \" + Network.get_name())
+	print(str(Network))
+	Network.send_message(\"Boat\")
+	#get_tree().client.send_message(\"Boat\")
+	#Client.send_message(\"Boat\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Sprite
+\"\"\"
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+var change = -10000000000000
+func _process(delta):
+	var loc = self.get_global_position()
+	if change != loc.x:
+		print(str(loc))
+		change = loc.x
+
+
+\"\"\"
+"
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+extra_spacing_top = -12
+extra_spacing_bottom = -7
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 15 )
+
+[node name="Game" type="Node2D"]
+
+[node name="tray" type="Node2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="-3Radio" type="Node2D" parent="tray"]
+position = Vector2( -5130, 0 )
+script = ExtResource( 6 )
+
+[node name="Radio test" type="Sprite" parent="tray/-3Radio"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 18 )
+
+[node name="-2Maps" type="Node2D" parent="tray"]
+position = Vector2( -3420, 0 )
+script = ExtResource( 5 )
+
+[node name="Maps test" type="Sprite" parent="tray/-2Maps"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="-1Paper" type="Node2D" parent="tray"]
+position = Vector2( -1710, 0 )
+script = ExtResource( 13 )
+
+[node name="papers test" type="Sprite" parent="tray/-1Paper"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 26 )
+
+[node name="lable" type="Node2D" parent="tray/-1Paper"]
+
+[node name="Label" type="Label" parent="tray/-1Paper/lable"]
+margin_left = 1207.0
+margin_top = -722.0
+margin_right = 1472.0
+margin_bottom = -259.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "This is a test of the most advanced submarine devised your orders are to procede to location alpha and eliminate the target craft they have been deemed an an enemy vessel by central command you have orders to use your ( Ti-v7x) torpedos. The launch is part of mission code named black bird "
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="tray/-1Paper/lable"]
+margin_left = 1397.0
+margin_top = -672.0
+margin_right = 1661.0
+margin_bottom = -301.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "This is a test of the most advanced submarine devised your orders are to procede to location alpha and eliminate the target craft they have been deemed an an enemy vessel by central command you have orders to use your (Ti-v7x) torpedos. The launch is part of mission code named black bird "
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="=0CapsDesk" type="Node2D" parent="tray"]
+script = ExtResource( 2 )
+
+[node name="DestTest" type="Sprite" parent="tray/=0CapsDesk"]
+position = Vector2( 0, -0.37735 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 20 )
+
+[node name="Button" type="Button" parent="tray/=0CapsDesk"]
+margin_left = 263.0
+margin_top = 98.0
+margin_right = 379.0
+margin_bottom = 221.0
+script = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="+1Sonar" type="Node2D" parent="tray"]
+position = Vector2( 1710, 0 )
+script = ExtResource( 22 )
+
+[node name="Sonar test" type="Sprite" parent="tray/+1Sonar"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 10 )
+
+[node name="+2Helm" type="Node2D" parent="tray"]
+position = Vector2( 3420, 0 )
+script = ExtResource( 3 )
+
+[node name="Controltest" type="Sprite" parent="tray/+2Helm"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+
+[node name="+3Weapons" type="Node2D" parent="tray"]
+position = Vector2( 5130, 0 )
+script = ExtResource( 21 )
+
+[node name="WeaponsTest" type="Sprite" parent="tray/+3Weapons"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 8 )
+
+[node name="+4Engine" type="Node2D" parent="tray"]
+position = Vector2( 6840, 0 )
+script = ExtResource( 9 )
+
+[node name="EngineTest" type="Sprite" parent="tray/+4Engine"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 17 )
+
+[node name="controls" type="Node2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="Camera" type="Camera2D" parent="controls"]
+current = true
+smoothing_speed = 0.0
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+
+[node name="sprites" type="Node2D" parent="controls"]
+scale = Vector2( 3, 3 )
+
+[node name="controls" type="Sprite" parent="controls/sprites"]
+texture = ExtResource( 23 )
+script = SubResource( 4 )
+
+[node name="cover" type="Sprite" parent="controls/sprites"]
+position = Vector2( 0.189596, -0.125783 )
+texture = ExtResource( 14 )
+
+[node name="display" type="Node2D" parent="controls/sprites"]
+script = ExtResource( 25 )
+
+[node name="text" type="Label" parent="controls"]
+margin_left = -849.0
+margin_top = 261.0
+margin_right = 531.0
+margin_bottom = 474.0
+custom_fonts/font = SubResource( 5 )
+text = "SONAR (7MC) - NEW CONTACT DESIGNATED MASTER 16 AT BEARING 239 RANGE 400 YD SPEED 7KN
+SONAR (7MC) - MASTER 16 NEW BEARING 200 RANGE 450 YD AND CLOSING 
+SONAR (7MC) - MASTER 16 IDENTIFIED AS TORPEDO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line" type="Label" parent="controls"]
+margin_left = -849.0
+margin_top = 224.915
+margin_right = 535.0
+margin_bottom = 261.915
+custom_fonts/font = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Path" type="Node" parent="controls"]
+script = ExtResource( 11 )
+
+[node name="testing" type="Node2D" parent="."]
+visible = false
+scale = Vector2( 3, 3 )
+
+[node name="map" type="Sprite" parent="testing"]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
